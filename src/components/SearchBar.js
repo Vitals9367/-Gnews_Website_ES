@@ -21,7 +21,7 @@ const SearchBar = ({getArticles}) => {
     const [error,setError] = useState('');
 
     const validateSearchText = (text) => {
-        if (!text.replace(/\s/g, '').match(/^[0-9a-z]+$/)){
+        if (!text.replace(/\s/g, '').match(/^[0-9a-zA-Z]+$/)){
             setError('Only numbers and letters!');
             return false;
         }
