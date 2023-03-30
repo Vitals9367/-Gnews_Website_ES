@@ -1,9 +1,7 @@
-const KEY = "e47f2de671d5f1b9412a226a0b69499f";
+const KEY = process.env.REACT_APP_GNEWS_API_KEY;
 
 export const requests = {
-
-    searchArticles: `https://gnews.io/api/v4/search?token=${KEY}&max=9&q=`,
+    searchArticles: `http://localhost:9200/news/_search`,
     logSearch: 'https://gnews-api-ibm.azurewebsites.net/logs/search',
     logClick: 'https://gnews-api-ibm.azurewebsites.net/logs/click'
-
 }

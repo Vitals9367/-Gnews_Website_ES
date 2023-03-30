@@ -1,19 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Search, X} from 'react-feather';
 
 import Axios from 'axios';
 import { requests } from '../utils/requests';
-
-const logSearch = async (text) => {
-
-    try{
-        await Axios.post(requests.logSearch,{keyword:text});
-        console.log("Search log updated! - " + text);
-    }catch(error){
-        console.error(error);
-    }
-
-}
 
 const SearchBar = ({getArticles}) => {
 
@@ -56,8 +45,16 @@ const SearchBar = ({getArticles}) => {
         }
 
         getArticles(text);
-        logSearch(text);
+        // logSearch(text);
     }
+
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+          onSearch(search)
+        }, 350)
+    
+        return () => clearTimeout(delayDebounceFn)
+      }, [search])
 
     return (
     <>
